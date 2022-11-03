@@ -1,0 +1,639 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "./variables";
+@import "./loading";
+@import "./diurnalCycle";
+
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  font-family: "Inter", sans-serif;
+  font-size: 1.05em;
+  border: none;
+  outline: none;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.item-desc {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  &.eletronico {
+    background-image: url("../lib/assets/items/eletronico.png");
+  }
+
+  &.eletronico-1 {
+    background-image: url("../lib/assets/items/eletronico-1.png");
+  }
+
+  &.eletronico-2 {
+    background-image: url("../lib/assets/items/eletronico-2.png");
+  }
+
+  &.eletronico-3 {
+    background-image: url("../lib/assets/items/eletronico-3.png");
+  }
+
+  &.eletronico-4 {
+    background-image: url("../lib/assets/items/eletronico-4.png");
+  }
+
+  &.vidro {
+    background-image: url("../lib/assets/items/vidro.png");
+  }
+
+  &.vidro-1 {
+    background-image: url("../lib/assets/items/vidro-1.png");
+  }
+
+  &.vidro-2 {
+    background-image: url("../lib/assets/items/vidro-2.png");
+  }
+
+  &.vidro-3 {
+    background-image: url("../lib/assets/items/vidro-3.png");
+  }
+
+  &.vidro-4 {
+    background-image: url("../lib/assets/items/vidro-4.png");
+  }
+
+  &.metal {
+    background-image: url("../lib/assets/items/metal.png");
+  }
+
+  &.metal-1 {
+    background-image: url("../lib/assets/items/metal-1.png");
+  }
+
+  &.metal-2 {
+    background-image: url("../lib/assets/items/metal-2.png");
+  }
+
+  &.metal-3 {
+    background-image: url("../lib/assets/items/metal-3.png");
+  }
+
+  &.metal-4 {
+    background-image: url("../lib/assets/items/metal-4.png");
+  }
+
+  &.organico {
+    background-image: url("../lib/assets/items/organico.png");
+  }
+
+  &.organico-1 {
+    background-image: url("../lib/assets/items/organico-1.png");
+  }
+
+  &.organico-2 {
+    background-image: url("../lib/assets/items/organico-2.png");
+  }
+
+  &.organico-3 {
+    background-image: url("../lib/assets/items/organico-3.png");
+  }
+
+  &.organico-4 {
+    background-image: url("../lib/assets/items/organico-4.png");
+  }
+
+  &.papel {
+    background-image: url("../lib/assets/items/papel.png");
+  }
+
+  &.papel-1 {
+    background-image: url("../lib/assets/items/papel-1.png");
+  }
+
+  &.papel-2 {
+    background-image: url("../lib/assets/items/papel-2.png");
+  }
+
+  &.papel-3 {
+    background-image: url("../lib/assets/items/papel-3.png");
+  }
+
+  &.papel-4 {
+    background-image: url("../lib/assets/items/papel-4.png");
+  }
+
+  &.plastico {
+    background-image: url("../lib/assets/items/plastico.png");
+  }
+
+  &.plastico-1 {
+    background-image: url("../lib/assets/items/plastico-1.png");
+  }
+
+  &.plastico-2 {
+    background-image: url("../lib/assets/items/plastico-2.png");
+  }
+
+  &.plastico-3 {
+    background-image: url("../lib/assets/items/plastico-3.png");
+  }
+
+  &.plastico-4 {
+    background-image: url("../lib/assets/items/plastico-4.png");
+  }
+}
+
+.game-card {
+  &.clicked {
+    cursor: url(../lib/assets/cursors/get.png), default !important;
+  }
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(var(--bg-color));
+  margin: auto;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+
+  & .card {
+    & .content {
+      & .container {
+        width: 4.5em;
+        height: 4.5em;
+        cursor: url(../lib/assets/cursors/pointer.png), pointer !important;
+        background-color: transparent;
+        @media (max-width: 800px) {
+          width: 4em;
+          height: 4em;
+          margin: auto;
+        }
+
+        &.open {
+          & .flip-card-inner {
+            transform: rotateY(180deg);
+          }
+        }
+
+        &.matched {
+          & .flip-card-inner {
+            transform: rotateY(180deg);
+          }
+        }
+
+        & .flip-card-inner {
+          pointer-events: none;
+          position: relative;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          transition: transform 0.6s;
+          transform-style: preserve-3d;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          border-radius: calc(var(--brd-radius) - 0.2em);
+        }
+
+        & .flip-card-front,
+        & .flip-card-back {
+          pointer-events: none;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          border-radius: calc(var(--brd-radius) - 0.2em);
+        }
+
+        & .flip-card-front {
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-image: url("../lib/assets/back-memory-game.png");
+        }
+
+        & .flip-card-back {
+          background-color: #83B1FB;
+          color: white;
+          transform: rotateY(180deg);
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: contain;
+
+          &.eletronico {
+            background-image: url("../lib/assets/items/eletronico.png");
+          }
+
+          &.eletronico-1 {
+            background-image: url("../lib/assets/items/eletronico-1.png");
+          }
+
+          &.eletronico-2 {
+            background-image: url("../lib/assets/items/eletronico-2.png");
+          }
+
+          &.eletronico-3 {
+            background-image: url("../lib/assets/items/eletronico-3.png");
+          }
+
+          &.eletronico-4 {
+            background-image: url("../lib/assets/items/eletronico-4.png");
+          }
+
+          &.vidro {
+            background-image: url("../lib/assets/items/vidro.png");
+          }
+
+          &.vidro-1 {
+            background-image: url("../lib/assets/items/vidro-1.png");
+          }
+
+          &.vidro-2 {
+            background-image: url("../lib/assets/items/vidro-2.png");
+          }
+
+          &.vidro-3 {
+            background-image: url("../lib/assets/items/vidro-3.png");
+          }
+
+          &.vidro-4 {
+            background-image: url("../lib/assets/items/vidro-4.png");
+          }
+
+          &.metal {
+            background-image: url("../lib/assets/items/metal.png");
+          }
+
+          &.metal-1 {
+            background-image: url("../lib/assets/items/metal-1.png");
+          }
+
+          &.metal-2 {
+            background-image: url("../lib/assets/items/metal-2.png");
+          }
+
+          &.metal-3 {
+            background-image: url("../lib/assets/items/metal-3.png");
+          }
+
+          &.metal-4 {
+            background-image: url("../lib/assets/items/metal-4.png");
+          }
+
+          &.organico {
+            background-image: url("../lib/assets/items/organico.png");
+          }
+
+          &.organico-1 {
+            background-image: url("../lib/assets/items/organico-1.png");
+          }
+
+          &.organico-2 {
+            background-image: url("../lib/assets/items/organico-2.png");
+          }
+
+          &.organico-3 {
+            background-image: url("../lib/assets/items/organico-3.png");
+          }
+
+          &.organico-4 {
+            background-image: url("../lib/assets/items/organico-4.png");
+          }
+
+          &.papel {
+            background-image: url("../lib/assets/items/papel.png");
+          }
+
+          &.papel-1 {
+            background-image: url("../lib/assets/items/papel-1.png");
+          }
+
+          &.papel-2 {
+            background-image: url("../lib/assets/items/papel-2.png");
+          }
+
+          &.papel-3 {
+            background-image: url("../lib/assets/items/papel-3.png");
+          }
+
+          &.papel-4 {
+            background-image: url("../lib/assets/items/papel-4.png");
+          }
+
+          &.plastico {
+            background-image: url("../lib/assets/items/plastico.png");
+          }
+
+          &.plastico-1 {
+            background-image: url("../lib/assets/items/plastico-1.png");
+          }
+
+          &.plastico-2 {
+            background-image: url("../lib/assets/items/plastico-2.png");
+          }
+
+          &.plastico-3 {
+            background-image: url("../lib/assets/items/plastico-3.png");
+          }
+
+          &.plastico-4 {
+            background-image: url("../lib/assets/items/plastico-4.png");
+          }
+        }
+      }
+    }
+  }
+}
+
+// EXTRA CLASSES
+//.icon {
+//  width: 25px;
+//  height: 25px;
+//  pointer-events: none;
+//}
+
+.mt-1 {
+  margin-top: 0.2em;
+}
+
+.hide {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+.drop {
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 30;
+}
+
+.car,
+.drop {
+  position: absolute;
+  bottom: 100px;
+  margin: auto;
+  background-size: cover;
+}
+
+.car {
+  z-index: 1000;
+  background: red;
+  background: url("../lib/assets/images/truck-blue.svg");
+  background-size: cover;
+  width: 50px;
+  height: 100px;
+  transition: 0.02s linear;
+}
+
+.line {
+  position: absolute;
+  height: 100px;
+  width: 10px;
+  margin-top: -100px;
+  margin-left: calc(50% - 5px);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.658);
+}
+
+.truck {
+  position: absolute;
+  z-index: 10;
+  top: -300px;
+  left: 225px;
+  width: 140px;
+  transition: 0.2s linear;
+}
+
+
+.hide {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+.drop {
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 30;
+}
+
+.car,
+.drop {
+  position: absolute;
+  bottom: 100px;
+  margin: auto;
+  background-size: cover;
+}
+
+.car {
+  z-index: 1000;
+  background: red;
+  background: url("../lib/assets/images/truck-blue.svg");
+  background-size: cover;
+  width: 50px;
+  height: 100px;
+  transition: 0.02s linear;
+}
+
+
+
+@keyframes truck {
+  0% {
+    top: -250px;
+  }
+
+  30% {
+    top: -150px;
+  }
+
+  40% {
+    top: -180px;
+  }
+
+  80% {
+    top: -150px;
+  }
+
+  100% {
+    top: -250px;
+  }
+
+}
+
+.container {
+  width: 800px;
+  height: 500px;
+  background-color: white;
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.container .container-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(2, 13, 26, 0.616);
+  color: white;
+  transition: 0.3s linear;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.container .container-wrapper h1 {
+  color: blue;
+  text-shadow: 0px 0px 4px rgba(0, 0, 255, 0.452);
+}
+
+.most-score {
+  font-size: 20px;
+  color: blue;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100000;
+}
+
+.most-score #score {
+  display: block;
+  color: white;
+  font-size: 22px;
+  transition: 0.3s linear;
+}
+
+.container .game-content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: rgb(123, 212, 88);
+}
+
+.content-game-area {
+  width: 450px;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container #gameArea {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(125, 131, 134);
+  overflow: hidden;
+  position: absolute;
+
+}
+
+.line {
+  position: absolute;
+  height: 100px;
+  width: 10px;
+  margin-top: -100px;
+  margin-left: calc(50% - 5px);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.658);
+}
+
+.controll-game {
+  z-index: 1000000;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 200px;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  display: none;
+}
+
+.controll-game div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.controll-game button {
+  width: 200px;
+  height: 50px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100vw;
+    height: calc(100vh - 200px);
+    border-radius: 0px;
+    top: 0px;
+    left: 0px;
+    transform: translate(0px, 0px);
+    padding: 0px;
+  }
+
+  .container #gameArea {
+    width: 80%;
+    margin: 0px auto;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%
+  }
+
+  .controll-game {
+    display: flex;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+  }
+}

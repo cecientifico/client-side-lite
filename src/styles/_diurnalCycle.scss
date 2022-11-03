@@ -1,0 +1,98 @@
+.card.diurnal {
+  animation: sky 60s linear 0s forwards infinite;
+  transition: background 1s ease-out;
+}
+.sun-and-moon:before {
+  content: "";
+  float: left;
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 0 10em 1em rgba(255, 255, 255, 0.5);
+}
+
+.sun-and-moon:after {
+  content: "";
+  float: right;
+  width: 7em;
+  height: 7em;
+  border-radius: 50%;
+  background-color: #ffe079;
+  box-shadow: 0 0 20em 5em rgba(255, 255, 128, 0.5);
+  animation: sun-colour 60s linear 0s forwards infinite;
+}
+.sun-and-moon {
+  position: absolute;
+  left: -10%;
+  bottom: -15%;
+  width: 120%;
+  overflow: visible;
+  animation: sun-movement 60s linear 0s forwards infinite;
+  @media (max-width: 800px) {
+    bottom: initial;
+    top: -15%;
+    width: 150%;
+    left: -30%;
+    animation: sun-movement 60s linear 0s forwards infinite reverse;
+  }
+  @media (max-width: 700px) {
+    bottom: initial;
+    top: -15%;
+    width: 150%;
+    left: -30%;
+    animation: sun-movement 60s linear 0s forwards infinite reverse;
+  }
+}
+@keyframes sun-colour {
+  15% {
+    background-color: #ffe079;
+  }
+  60% {
+    background-color: #ff6c07;
+  }
+  70% {
+    background-color: #ffe079;
+  }
+}
+
+@keyframes sun-movement {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+
+@keyframes sky {
+  0% {
+    background-color: rgba(202, 103, 2, 0.3);
+    color: rgb(var(--text-secondary));
+  }
+  5% {
+    background-color: #ffffff;
+    color: rgb(var(--text-secondary));
+  }
+  30% {
+    background-color: #ffffff;
+    color: rgb(var(--text-secondary));
+  }
+  50% {
+    background-color: rgba(202, 103, 2, 0.3);
+    color: rgb(var(--text-secondary));
+  }
+  55% {
+    background-color: #2b2d42;
+    color: rgb(var(--text-nightly));
+  }
+  80% {
+    background-color: #2b2d42;
+    color: rgb(var(--text-nightly));
+  }
+  100% {
+    background-color: rgba(202, 103, 2, 0.3);
+    color: rgb(var(--text-secondary));
+  }
+}
